@@ -54,7 +54,7 @@ createBoard()
 async function getBoard() {
     let board;
 
-    await $.get('/board', function (data) {
+    await $.get('/imports/board', function (data) {
         reData = data
     })
     return reData
@@ -70,7 +70,7 @@ function getMoves(sqId) {
 
     $.ajax({
         type: "POST",
-        url: "/board",
+        url: "/imports/board",
         enctype: 'multipart/form-data',
         data: formdata,
         success: function (res) {
@@ -99,7 +99,7 @@ function getAiMove(aiCol) {
     formdata.append('aiCol', aiCol)
     $.ajax({
         type: "POST",
-        url: "/board",
+        url: "/imports/board",
         enctype: 'multipart/form-data',
         data: formdata,
         success: function (res) {
@@ -128,7 +128,7 @@ function sendNewPlace(oldID, newID) {
 
     $.ajax({
         type: "POST",
-        url: "/board",
+        url: "/imports/board",
         enctype: 'multipart/form-data',
         data: formdata,
         success: function (res) {
@@ -162,7 +162,7 @@ function drawImages(piece) {
 
     const piecee = piece.toUpperCase()
     if (piece) {
-        return `images/${color}${piecee}.png`
+        return `/static/pieces/${color}${piecee}.png`
     }
 }
 
